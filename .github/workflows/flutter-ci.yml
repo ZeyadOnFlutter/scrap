@@ -1,0 +1,52 @@
+name: Flutter Android CI/CD (FVM)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Dart
+        run: sudo apt-get install dart
+
+      - name: Install FVM
+        run: dart pub global activate fvm
+
+      - name: Install Flutter via FVM
+        run: fvm install
+
+      - name: Flutter pub get
+        run: fvm flutter pub get
+
+      # 1️⃣ Check formatting
+      - name: Check code formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      # 2️⃣ Static analysis
+      - name: Run static analysis
+        run: fvm flutter analyze
+
+      # 3️⃣ Run tests
+      - name: Run tests
+        run: fvm flutter test
+
+      # 4️⃣ Build Android release (.aab)
+      - name: Build Android App Bundle
+        run: fvm flutter build appbundle --release
+
+      # 5️⃣ Upload artifact
+      - name: Upload Android Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-release
+          path: build/app/outputs/bundle/release/app-release.aab
