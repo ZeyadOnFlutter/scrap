@@ -1,69 +1,67 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'font_manager.dart';
 
-// import 'color_manager.dart';
-// import 'font_manager.dart';
+TextStyle _getTextStyle(
+  double fontSize,
+  FontWeight fontWeight,
+  Color color,
+) =>
+    TextStyle(
+      fontSize: fontSize,
+      fontFamily: FontConstants.fontFamily,
+      color: color,
+      fontWeight: fontWeight,
+    );
 
-// TextStyle _getTextStyle(
-//   double fontSize,
-//   FontWeight fontWeight,
-//   Color color,
-// ) =>
-//     TextStyle(
-//       fontSize: fontSize,
+TextStyle getLightStyle({
+  double? fontSize,
+  required Color color,
+}) =>
+    _getTextStyle(
+      fontSize ?? FontSize.s12,
+      FontWeightManager.light,
+      color,
+    );
 
-//       color: color,
-//       fontWeight: fontWeight,
-//     );
+TextStyle getRegularStyle({
+  double? fontSize,
+  required Color color,
+}) =>
+    _getTextStyle(
+      fontSize ?? FontSize.s12,
+      FontWeightManager.regular,
+      color,
+    );
 
-// TextStyle getLightStyle({
-//   double? fontSize,
-//   required Color color,
-// }) =>
-//     _getTextStyle(
-//       fontSize ?? FontSize.s12,
-//       FontWeightManager.light,
-//       color,
-//     );
+TextStyle getMediumStyle({
+  double? fontSize,
+  required Color color,
+}) =>
+    _getTextStyle(
+      fontSize ?? FontSize.s12,
+      FontWeightManager.medium,
+      color,
+    );
 
-// TextStyle getRegularStyle({
-//   double? fontSize,
-//   required Color color,
-// }) =>
-//     _getTextStyle(
-//       fontSize ?? FontSize.s12,
-//       FontWeightManager.regular,
-//       color,
-//     );
+TextStyle getSemiBoldStyle({
+  double? fontSize,
+  required Color color,
+}) =>
+    _getTextStyle(
+      fontSize ?? FontSize.s12,
+      FontWeightManager.semiBold,
+      color,
+    );
 
-// TextStyle getMediumStyle({
-//   double? fontSize,
-//   required Color color,
-// }) =>
-//     _getTextStyle(
-//       fontSize ?? FontSize.s12,
-//       FontWeightManager.medium,
-//       color,
-//     );
-
-// TextStyle getSemiBoldStyle({
-//   double? fontSize,
-//   required Color color,
-// }) =>
-//     _getTextStyle(
-//       fontSize ?? FontSize.s12,
-//       FontWeightManager.semiBold,
-//       color,
-//     );
-
-// TextStyle getBoldStyle({
-//   double? fontSize,
-//   required Color color,
-// }) =>
-//     _getTextStyle(
-//       fontSize ?? FontSize.s12,
-//       FontWeightManager.bold,
-//       color,
-//     );
+TextStyle getBoldStyle({
+  double? fontSize,
+  required Color color,
+}) =>
+    _getTextStyle(
+      fontSize ?? FontSize.s12,
+      FontWeightManager.bold,
+      color,
+    );
 
 // TextStyle getTextWithLine() => TextStyle(
 //       color: ColorManager.primary,

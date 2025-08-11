@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../resources/color_manager.dart';
+
 final ThemeData appTheme = ThemeData(
   pageTransitionsTheme: const PageTransitionsTheme(
     builders: {
@@ -7,4 +9,5 @@ final ThemeData appTheme = ThemeData(
       TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
     },
   ),
+  scaffoldBackgroundColor: ColorManager.lightGrey,
 );
