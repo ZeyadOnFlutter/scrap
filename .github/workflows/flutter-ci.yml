@@ -26,7 +26,9 @@ jobs:
           sudo apt-get install dart
 
       - name: Install FVM
-        run: dart pub global activate fvm
+        run: |
+          dart pub global activate fvm
+          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
 
       - name: Install Flutter via FVM
         run: fvm install
