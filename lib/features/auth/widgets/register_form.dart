@@ -108,7 +108,9 @@ class RegisterForm extends StatelessWidget {
             textInputType: TextInputType.text,
             textInputFormatter: LengthLimitingTextInputFormatter(16),
             validator: (value) => Validator.validateConfirmPassword(
-                value, passwordController.text),
+              value,
+              passwordController.text,
+            ),
           ),
           SizedBox(height: 30.h),
           AuthToggleMessage(
