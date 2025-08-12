@@ -7,31 +7,45 @@ import '../resources/styles_manager.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool? automaticallyImplyLeading;
+  final bool? centerTitle;
+  final double? elevation;
+  final double? titleSpacing;
+  final Color? backgroundColor;
+  final Color? surfaceTintColor;
+  final Color? shadowColor;
+  final Color? textColor;
   final String? title;
 
-  const CustomAppBar({this.automaticallyImplyLeading, this.title});
+  const CustomAppBar({
+    this.automaticallyImplyLeading,
+    this.title,
+    this.centerTitle,
+    this.backgroundColor,
+    this.elevation,
+    this.shadowColor,
+    this.surfaceTintColor,
+    this.textColor,
+    this.titleSpacing,
+  });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: ColorManager.white,
-      surfaceTintColor: ColorManager.white,
+      backgroundColor: backgroundColor ?? ColorManager.white,
+      surfaceTintColor: surfaceTintColor ?? ColorManager.white,
       automaticallyImplyLeading: automaticallyImplyLeading ?? false,
-      elevation: 5,
+      elevation: elevation ?? 5,
       titleSpacing: 24.w,
-      shadowColor: Colors.black,
+      centerTitle: centerTitle,
+      shadowColor: shadowColor ?? Colors.black,
       title: Text(
         title ?? '',
-        style: getMediumStyle(color: ColorManager.black)
+        style: getMediumStyle(color: textColor ?? ColorManager.black)
             .copyWith(fontSize: FontSize.s24),
       ),
-      actions: [
-        Image.asset(
-          ImageAssets.srapIcon,
-          height: 100.h,
-          width: 100.w,
-        ),
-      ],
+      actions: centerTitle == false
+          ? [Image.asset(ImageAssets.srapIcon, height: 100.h, width: 100.w)]
+          : null,
     );
   }
 

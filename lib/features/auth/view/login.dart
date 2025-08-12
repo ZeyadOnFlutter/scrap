@@ -1,24 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/resources/assets_manager.dart';
-import '../../../core/resources/color_manager.dart';
-import '../../../core/resources/font_manager.dart';
-import '../../../core/resources/styles_manager.dart';
 import '../../../core/router/route_names.dart';
-import '../../../core/utils/validator.dart';
 import '../../../core/widgets/custom_app_bar.dart';
-import '../../../core/widgets/custom_elevated_button.dart';
-import '../../../core/widgets/custom_text_field.dart';
-import '../widgets/auth_header.dart';
-import '../widgets/auth_toggle_message.dart';
-import '../widgets/social_login_options_buttons.dart';
-import '../widgets/social_login_options_text.dart';
+import '../widgets/login_form.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -64,70 +52,14 @@ class _LoginState extends State<Login> {
       appBar: const CustomAppBar(
         title: 'Login',
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SizedBox(height: 10.h),
-                const AuthHeader(
-                  label1: 'Login to continue',
-                  label2: 'Welcome Back',
-                ),
-                SizedBox(height: 30.h),
-                CustomTextField(
-                  controller: _emailController,
-                  focusNode: _emailNode,
-                  nextFocus: _passwordNode,
-                  hintText: 'Email',
-                  prefixIcon: SvgAssets.profile,
-                  textInputType: TextInputType.emailAddress,
-                  validator: Validator.validateEmail,
-                ),
-                SizedBox(height: 16.h),
-                CustomTextField(
-                  focusNode: _passwordNode,
-                  controller: _passwordController,
-                  hintText: 'Password',
-                  prefixIcon: SvgAssets.lock,
-                  isObscured: true,
-                  textInputType: TextInputType.text,
-                  textInputFormatter: LengthLimitingTextInputFormatter(16),
-                  validator: Validator.isValidPassword,
-                ),
-                SizedBox(height: 20.h),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    'Forgot Password?',
-                    style: getRegularStyle(color: ColorManager.blue)
-                        .copyWith(fontSize: FontSize.s14),
-                  ),
-                ),
-                SizedBox(height: 40.h),
-                AuthToggleMessage(
-                  label1: 'Dont’t have an account?',
-                  label2: 'Regsiter',
-                  onTap: _onRegisterPressed,
-                ),
-                SizedBox(height: 24.h),
-                CustomElevatedButton(
-                  label: 'Login',
-                  onTap: _onLoginPressed,
-                ),
-                SizedBox(height: 20.h),
-                const SocialLoginOptionsText(label: 'Or Login With'),
-                SizedBox(height: 24.h),
-                const SocialLoginOptionsButtons(),
-                SizedBox(height: 24.h),
-              ],
-            ),
-          ),
-        ),
+      body: LoginForm(
+        formKey: _formKey,
+        emailController: _emailController,
+        emailNode: _emailNode,
+        passwordController: _passwordController,
+        passwordNode: _passwordNode,
+        onLoginPressed: _onLoginPressed,
+        onRegisterPressed: _onRegisterPressed,
       ),
     );
   }

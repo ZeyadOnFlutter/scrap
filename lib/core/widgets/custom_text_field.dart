@@ -83,10 +83,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
       inputFormatters: widget.textInputFormatter != null
           ? [widget.textInputFormatter!]
           : const [],
-      onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
+      //onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(
-          horizontal: Insets.s8,
+          horizontal: Insets.s14,
           vertical: Insets.s18,
         ),
         hintText: widget.hintText ?? '',
