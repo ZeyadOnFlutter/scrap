@@ -31,17 +31,19 @@ class _LoginState extends State<Login> {
   final _passwordController = TextEditingController();
   final _passwordNode = FocusNode();
   final _formKey = GlobalKey<FormState>();
+
   late StreamSubscription<bool> keyboardSubscription;
   @override
   void initState() {
     super.initState();
     final keyboardVisibilityController = KeyboardVisibilityController();
-    keyboardSubscription =
-        keyboardVisibilityController.onChange.listen((bool visible) {
-      if (!visible) {
-        FocusManager.instance.primaryFocus?.unfocus();
-      }
-    });
+    keyboardSubscription = keyboardVisibilityController.onChange.listen(
+      (bool visible) {
+        if (!visible) {
+          FocusManager.instance.primaryFocus?.unfocus();
+        }
+      },
+    );
   }
 
   @override
@@ -98,7 +100,7 @@ class _LoginState extends State<Login> {
                   isObscured: true,
                   textInputType: TextInputType.text,
                   textInputFormatter: LengthLimitingTextInputFormatter(16),
-                  validator: Validator.validatePassword,
+                  validator: Validator.isValidPassword,
                 ),
                 SizedBox(height: 20.h),
                 Align(
@@ -120,6 +122,7 @@ class _LoginState extends State<Login> {
                 const SocialLoginOptionsText(),
                 SizedBox(height: 24.h),
                 const SocialLoginOptionsButtons(),
+                SizedBox(height: 24.h),
               ],
             ),
           ),

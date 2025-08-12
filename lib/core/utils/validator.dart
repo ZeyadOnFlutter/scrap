@@ -14,16 +14,18 @@ class Validator {
     }
   }
 
-  static String? validatePassword(String? val) {
-    if (val == null) {
-      return 'this field is required';
-    } else if (val.isEmpty) {
-      return 'this field is required';
-    } else if (val.length < 8) {
-      return 'strong password please';
-    } else {
-      return null;
+  static String? isValidPassword(String? password) {
+    final bool isStrongPassword =
+        RegExp(r'^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$')
+            .hasMatch(password ?? '');
+    if (password == null || password.isEmpty) {
+      return 'Please Enter Your Password';
+    } else if (password.trim().length < 8) {
+      return 'Password Should Be More Than 8 Characters';
+    } else if (!isStrongPassword) {
+      return 'Password must contain an uppercase letter, a number, and a special character';
     }
+    return null;
   }
 
   static String? validateConfirmPassword(String? val, String? password) {
