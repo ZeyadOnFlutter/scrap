@@ -6,14 +6,20 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:scrap/features/auth/view/login.dart';
 
 void main() {
   testWidgets('Login screen loads', (WidgetTester tester) async {
     await tester.pumpWidget(
-      const MaterialApp(
-        home: Login(),
+      ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) => const MaterialApp(
+          home: Login(),
+        ),
       ),
     );
 
