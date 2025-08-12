@@ -44,7 +44,6 @@ class _LoginState extends State<Login> {
         }
       },
     );
-
   }
 
   @override
@@ -102,7 +101,6 @@ class _LoginState extends State<Login> {
                   textInputType: TextInputType.text,
                   textInputFormatter: LengthLimitingTextInputFormatter(16),
                   validator: Validator.isValidPassword,
-
                 ),
                 SizedBox(height: 20.h),
                 Align(
@@ -125,7 +123,6 @@ class _LoginState extends State<Login> {
                 SizedBox(height: 24.h),
                 const SocialLoginOptionsButtons(),
                 SizedBox(height: 24.h),
-
               ],
             ),
           ),
