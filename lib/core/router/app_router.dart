@@ -1,12 +1,13 @@
 import 'package:go_router/go_router.dart';
 import '../../features/auth/view/login.dart';
 import '../../features/auth/view/regsiter.dart';
+import '../../features/auth/view/vehicle_details.dart';
 import '../../features/splash/splash_screen.dart';
 import 'route_names.dart';
 import 'route_paths.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: RoutePaths.splash,
+  initialLocation: RoutePaths.register,
   debugLogDiagnostics: true,
   routes: [
     GoRoute(
@@ -25,6 +26,13 @@ final GoRouter router = GoRouter(
       path: RoutePaths.register,
       name: RouteNames.register,
       builder: (context, state) => const Register(),
+      routes: [
+        GoRoute(
+          path: RoutePaths.vehicleDetials,
+          name: RouteNames.vehicleDetials,
+          builder: (context, state) => const VehicleDetails(),
+        ),
+      ],
     ),
   ],
 );

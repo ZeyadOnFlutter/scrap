@@ -15,6 +15,7 @@ class SvgAssets {
   static const String phone = '$_svgPath/phone.svg';
 }
 
-// class IconsAssets {
-//   static const String _iconsPath = 'assets/icons';
-// }
+class IconsAssets {
+  static const String _iconsPath = 'assets/icons';
+  static const String car = '$_iconsPath/car.png';
+}
