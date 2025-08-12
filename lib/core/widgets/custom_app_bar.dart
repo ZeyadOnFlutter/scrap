@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../resources/assets_manager.dart';
 import '../resources/color_manager.dart';
 import '../resources/font_manager.dart';
 import '../resources/styles_manager.dart';
@@ -24,6 +25,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         style: getMediumStyle(color: ColorManager.black)
             .copyWith(fontSize: FontSize.s24),
       ),
+      actions: [
+        Image.asset(
+          ImageAssets.srapIcon,
+          height: 100.h,
+          width: 100.w,
+        ),
+      ],
     );
   }
 
