@@ -39,16 +39,17 @@ class Validator {
   }
 
   static String? validateUsername(String? val) {
-    final RegExp usernameRegex = RegExp(r'^[a-zA-Z0-9,.-]+$');
-    if (val == null) {
-      return 'this field is required';
-    } else if (val.isEmpty) {
-      return 'this field is required';
-    } else if (!usernameRegex.hasMatch(val)) {
-      return 'enter valid username';
-    } else {
-      return null;
+    final usernameRegex = RegExp(
+      r"^(?!.*[-']{2})[^\s'-][\p{L}\s'-]*[^\s'-]$",
+      unicode: true,
+    );
+
+    if (val == null || val.trim().isEmpty) {
+      return 'This field is required';
+    } else if (!usernameRegex.hasMatch(val.trim())) {
+      return 'Enter a valid full name';
     }
+    return null;
   }
 
   static String? validateFullName(String? val) {
@@ -69,5 +70,22 @@ class Validator {
     } else {
       return null;
     }
+  }
+
+  static String? validateEgyptianPhoneNumber(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Phone number is required';
+    }
+    if (!value.startsWith('+20')) {
+      return 'Phone number must start with +20';
+    }
+    final String numberWithoutCode = value.substring(3);
+    final RegExp egyptianPhoneRegex = RegExp(r'^(10|11|12|15)[0-9]{8}$');
+
+    if (!egyptianPhoneRegex.hasMatch(numberWithoutCode)) {
+      return 'Enter a valid Egyptian mobile number (e.g. +201012345678)';
+    }
+
+    return null;
   }
 }

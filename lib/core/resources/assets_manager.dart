@@ -11,6 +11,8 @@ class SvgAssets {
   static const String lock = '$_svgPath/lock.svg';
   static const String google = '$_svgPath/google.svg';
   static const String facebook = '$_svgPath/facebook.svg';
+  static const String sms = '$_svgPath/sms.svg';
+  static const String phone = '$_svgPath/phone.svg';
 }
 
 // class IconsAssets {

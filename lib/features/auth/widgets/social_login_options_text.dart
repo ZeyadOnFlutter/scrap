@@ -6,8 +6,8 @@ import '../../../core/resources/font_manager.dart';
 import '../../../core/resources/styles_manager.dart';
 
 class SocialLoginOptionsText extends StatelessWidget {
-  const SocialLoginOptionsText({super.key});
-
+  const SocialLoginOptionsText({super.key, this.label});
+  final String? label;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -15,11 +15,11 @@ class SocialLoginOptionsText extends StatelessWidget {
       children: [
         _buildDivider(),
         Text(
-          'Or Login With',
+          label ?? '',
           style:
               getRegularStyle(color: ColorManager.grey, fontSize: FontSize.s14),
         ),
-        _buildDivider()
+        _buildDivider(),
       ],
     );
   }
